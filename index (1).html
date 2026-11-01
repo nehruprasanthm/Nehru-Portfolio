@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nehru Prasanth M | Junior Security Analyst</title>
+<meta name="description" content="Junior security analyst in Erode. I attack my own labs, then check whether the SIEM saw it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07111C;--panel:#0E1D2C;--ink:#E6EDF2;--mute:#93A6B6;--line:#1F3347;--ok:#3FC4B3;--bad:#FF6B52;--navy:#9CC4E4;
+--d:'Bricolage Grotesque',Georgia,serif;--b:'Instrument Sans',system-ui,sans-serif;--m:'JetBrains Mono',monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 var(--b)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.w{max-width:1080px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:5;background:rgba(7,17,28,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .w{display:flex;justify-content:space-between;align-items:center;height:58px}
+.logo{font:700 14px var(--m);text-decoration:none}
+nav a{font:500 12px var(--m);text-decoration:none;margin-left:20px;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+@media(max-width:640px){nav a:not(:last-child){display:none}}
+section{padding:80px 0}
+h2{font:800 clamp(26px,4vw,38px)/1.1 var(--d);letter-spacing:-.02em;margin-bottom:10px}
+.k{font:500 12px var(--m);color:var(--mute);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.sub{color:var(--mute);max-width:620px;margin-bottom:34px}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:64px 0 170px;background:radial-gradient(ellipse at 72% 18%,#10304A 0,#07111C 62%)}
+.hero .w{position:relative;z-index:2}
+#net{position:absolute;inset:0;width:100%;height:100%}
+.shield{position:absolute;right:4%;top:70px;width:min(34vw,380px);color:var(--ok);opacity:.13}
+#sky{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:flex-end;gap:3px;height:130px;pointer-events:none;z-index:1}
+#sky i{flex:1;background:repeating-linear-gradient(#0B1A28 0 7px,#12283C 7px 9px);border-top:2px solid var(--line);position:relative}
+#sky i.led::after{content:"";position:absolute;top:8px;right:6px;width:4px;height:4px;border-radius:50%;background:var(--ok);animation:bl 2s infinite}
+#sky i:nth-child(3n)::after{background:var(--bad);animation-duration:1.3s}
+@keyframes bl{50%{opacity:.15}}
+.cap{position:absolute;right:24px;bottom:138px;z-index:2;font:400 11px var(--m);color:var(--mute)}
+.circ{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M0 45h28l9-9h16l9 9h28M45 0v26M45 64v26' fill='none' stroke='%231A2E42'/%3E%3Ccircle cx='45' cy='45' r='2.5' fill='%231A2E42'/%3E%3C/svg%3E")}
+h1{font:800 clamp(36px,7vw,78px)/1 var(--d);letter-spacing:-.035em;max-width:900px}
+h1 em{font-style:normal;color:var(--bad)}
+.lede{max-width:600px;margin:22px 0 38px;color:var(--mute);font-size:18px}
+/* console */
+.con{background:var(--panel);border:1px solid var(--line)}
+.bar{display:flex;gap:4px;padding:14px;border-bottom:1px solid var(--line)}
+.blk{flex:1;height:34px;background:var(--line);transition:background .4s,transform .2s;cursor:pointer;border:0}
+.blk.ok{background:var(--ok)}.blk.bad{background:var(--bad)}
+.blk[aria-pressed=true]{transform:translateY(-4px);outline:2px solid var(--ink)}
+.cg{display:grid;grid-template-columns:300px 1fr}
+@media(max-width:760px){.cg{grid-template-columns:1fr}}
+.list{border-right:1px solid var(--line)}
+.row{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:13px 16px;font:500 14px var(--b);color:var(--ink);cursor:pointer}
+.row:hover{background:var(--bg)}
+.row[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.tag{font:700 11px var(--m)}
+.tag.ok{color:var(--ok)}.tag.bad{color:var(--bad)}
+.row[aria-pressed=true] .tag{color:var(--bg)}
+.det{padding:26px 28px;min-height:250px}
+.det h3{font:800 26px var(--d);margin:6px 0 12px}
+.det p{color:var(--mute);margin-bottom:12px}
+.det .st{display:inline-block;font:700 12px var(--m);padding:4px 10px;color:#04121C}
+.det .st.ok{background:var(--ok)}.det .st.bad{background:var(--bad)}
+.leg{font:400 12px var(--m);color:var(--mute);padding:12px 16px;border-top:1px solid var(--line)}
+.insight{margin-top:30px;padding-left:18px;border-left:4px solid var(--bad);max-width:760px;font-size:18px}
+/* cards */
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:border-color .2s,transform .2s}
+a.card:hover{border-color:var(--ink);transform:translateY(-3px)}
+.card h3{font:800 21px var(--d)}
+.card p{color:var(--mute);font-size:15px}
+.meta{font:400 12px var(--m);color:var(--mute);margin-top:auto;padding-top:8px}
+.lnk{font:500 12px var(--m);color:var(--navy)}
+.stat{font:800 40px/1 var(--d)}
+/* log */
+.log{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.log div{background:var(--panel);padding:20px}
+.log b{display:block;font:700 12px var(--m);color:var(--mute);margin-bottom:6px}
+.log span{font-size:15px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:760px){.about{grid-template-columns:1fr}}
+.about p{margin-bottom:14px;font-size:17px}
+.cert{display:flex;gap:18px;align-items:center}
+.cert img{width:150px;border:1px solid var(--line);display:block}
+.cert img[hidden]{display:none}
+footer{border-top:1px solid var(--line);padding:56px 0 40px}
+footer h2{font-size:clamp(30px,5vw,52px)}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin:20px 0 40px}
+.btn{font:700 13px var(--m);padding:13px 22px;border:2px solid var(--ink);text-decoration:none}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn:hover{opacity:.8}
+.fine{font:400 12px var(--m);color:var(--mute)}
+.rv{opacity:0;transform:translateY(16px);transition:.6s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="w"><a class="logo" href="#top">nehru.prasanth</a>
+<nav><a href="#work">Work</a><a href="#log">Practice</a><a href="#ai">AI</a><a href="#about">About</a><a href="#contact">Contact</a></nav></div></header>
+
+<main id="top">
+<section class="hero"><canvas id="net" aria-hidden="true"></canvas>
+<svg class="shield" viewBox="0 0 200 240" aria-hidden="true"><path d="M100 10 185 45v75c0 55-40 95-85 112C55 215 15 175 15 120V45Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="100" cy="100" r="24" fill="none" stroke="currentColor" stroke-width="2"/><path d="M100 124v44M100 150h14" stroke="currentColor" stroke-width="2"/></svg>
+<div id="sky" aria-hidden="true"></div><span class="cap">simulated traffic · red = hostile packet</span>
+<div class="w">
+<p class="k">Nehru Prasanth M · Junior security analyst · Erode, India</p>
+<h1>I attacked my own lab. The SIEM missed <em>5 of 8</em> attacks.</h1>
+<p class="lede">I build the target, run the attacks, then check whether Wazuh noticed. Click an attack below to see what happened. This is real data from my SecureCorp assessment.</p>
+<div class="con" role="group" aria-label="SecureCorp detection results">
+<div class="bar" id="bar"></div>
+<div class="cg"><div class="list" id="list"></div>
+<div class="det" id="det" aria-live="polite"></div></div>
+<div class="leg"><span style="color:var(--ok)">■</span> caught by default Wazuh rules &nbsp; <span style="color:var(--bad)">■</span> invisible to the SIEM &nbsp;·&nbsp; target: DVWA on Ubuntu 22.04 · Wazuh 4.9.2</div>
+</div>
+<p class="insight">Wazuh caught attacks that <em style="font-style:normal;font-weight:600">looked</em> bad: repeated logins, script tags, sqlmap noise. It missed the ones that were a single clean request, even when the damage was worse.</p>
+</div></section>
+
+<section id="work"><div class="w">
+<p class="k">Projects</p><h2>What I've built and broken</h2>
+<p class="sub">Each project has a public repo with screenshots and write-ups, including the parts that failed.</p>
+<div class="g3 rv">
+<a class="card" href="https://github.com/nehruprasanthm/securecorp-security-assessment" target="_blank" rel="noopener">
+<span class="stat">10 attacks</span><h3>SecureCorp Security Assessment</h3>
+<p>Deployed Wazuh, ran 10 attacks across 8 techniques, then investigated each in the SIEM. Chained CSRF with clickjacking into an admin takeover from one page visit. Fixed 9+ tooling failures along the way. Wrote the full report and a 16-slide client debrief.</p>
+<span class="meta">Wazuh · DVWA · sqlmap · Hydra · Nmap</span><span class="lnk">View repo →</span></a>
+<a class="card" href="https://github.com/nehruprasanthm/ad-attack-lab" target="_blank" rel="noopener">
+<span class="stat">1 account</span><h3>Active Directory Attack Lab</h3>
+<p>Built a Samba AD domain, enumerated users, and password-sprayed a weak service account with my own Python script. BloodHound then showed no path to Domain Admin. Kerberoasting was blocked by a tool bug, and I documented it instead of hiding it.</p>
+<span class="meta">Samba AD · Impacket · BloodHound · Docker</span><span class="lnk">View repo →</span></a>
+<a class="card" href="https://github.com/nehruprasanthm/port-scanner" target="_blank" rel="noopener">
+<span class="stat">8000 ports</span><h3>Multi-threaded Port Scanner</h3>
+<p>A TCP scanner in plain Python sockets with no Nmap. Threading took a full 8000-port scan from several minutes to a few seconds.</p>
+<span class="meta">Python · socket · ThreadPoolExecutor</span><span class="lnk">View repo →</span></a>
+</div></div></section>
+
+<section id="log" class="circ"><div class="w">
+<p class="k">Practice log</p><h2>Where I'm learning right now</h2>
+<p class="sub">Numbers taken from my own dashboards. I'm early on most of these, and I'd rather show that than round it up.</p>
+<div class="log rv">
+<div><b>TRYHACKME</b><span>Level 3 · Pathfinder · Top 40%</span></div>
+<div><b>CYLAB ACADEMY</b><span>23 challenges · Beginner's CTF playlist 26/28</span></div>
+<div><b>PWN.COLLEGE</b><span>Linux Luminarium · 25 challenges solved</span></div>
+<div><b>OVERTHEWIRE</b><span>Bandit wargame, working through levels 12–13</span></div>
+<div><b>HACKER101 CTF</b><span>7/26 points · 4 flags, web challenges</span></div>
+<div><b>HTB ACADEMY</b><span>Level 1 · Intro module 87.5%</span></div>
+<div><b>BUG BOUNTY</b><span>Studying disclosed HackerOne reports and API recon methods (OpenAPI, GraphQL introspection). No reports filed yet.</span></div>
+</div></div></section>
+
+<section id="ai"><div class="w">
+<p class="k">AI workflow</p><h2>I use Claude as a tool, and I check its work</h2>
+<p class="sub">I use AI to build, troubleshoot and speed up repetitive work. In security, a wrong answer from a model is still a wrong answer, so I test what it gives me before I trust it.</p>
+<div class="g3 rv">
+<div class="card"><h3>Custom Claude Skills</h3><p>Wrote 2 reusable skills: <b>pro-video-editor</b> (script-driven FFmpeg editing) and <b>shorts-video-editor</b> (vertical short-form video). It's the same habit as writing a good runbook: clear steps that give a repeatable result.</p></div>
+<div class="card"><h3>Prompting and building</h3><p>I design prompts, split work into steps, and iterate on the output. I've used this to build and deploy websites on Netlify without writing everything by hand.</p></div>
+<div class="card"><h3>Where I'm taking it</h3><p>Next project: AI-assisted alert triage on my Wazuh lab. It will be on this page once it works and I can show real results.</p></div>
+</div></div></section>
+
+<section id="about" class="circ"><div class="w about">
+<div><p class="k">Why security</p><h2>It started with a scam</h2></div>
+<div class="rv">
+<p>In my college days my phone was stolen. Not long after, I paid an Instagram clothes seller through GPay and never received anything. I reported it to the cyber cell. Nobody followed up.</p>
+<p>That was the day I decided I wanted to understand this world from the inside.</p>
+<p>I want to work in red team because I like discovering things. As a kid I wanted to be an astronaut for the same reason. In security, every system might hide a bug nobody has found yet, and finding one is the best feeling I know.</p>
+<p>Then I want to tell people what I found, so they know how attackers really work and stay safe.</p>
+<p class="fine">B.E. Electrical &amp; Electronics Engineering, Bannari Amman Institute of Technology, 2025. The control-systems background is why ICS/OT security interests me too.</p>
+</div></div></section>
+
+<section><div class="w">
+<p class="k">Certificates</p><h2>Training and certifications</h2>
+<div class="card cert rv" style="margin-top:24px;max-width:620px">
+<img src="assets/certificates/aenexz-cybersecurity.jpg" alt="Aenexz Tech certificate" onerror="this.hidden=true">
+<div><h3 style="font-size:18px">Cyber Security Training &amp; Internship</h3><p>Completion certificates, Aenexz Tech Pvt Ltd, Jun–Aug 2026. Covered Wireshark traffic analysis, VLSM network design and incident reconstruction.</p></div></div>
+</div></section>
+</main>
+
+<footer id="contact"><div class="w">
+<h2>Looking for a first role in SOC or pentest.</h2>
+<p class="sub">I'm open to junior SOC analyst, VAPT and red team roles. Email is the fastest way to reach me.</p>
+<div class="cta"><a class="btn p" href="mailto:nehruregalyasri@gmail.com">nehruregalyasri@gmail.com</a>
+<a class="btn" href="https://github.com/nehruprasanthm" target="_blank" rel="noopener">GitHub</a>
+<a class="btn" href="https://tryhackme.com/p/nehruregalyasri" target="_blank" rel="noopener">TryHackMe</a></div>
+<p class="fine">All attack work was done in isolated labs I built and own. © 2026 Nehru Prasanth M</p>
+</div></footer>
+
+<script>
+const A=[
+["Brute force (SSH + web login)",1,"Passwords cracked in seconds with Hydra.","Caught on SSH. Repeated failed logins are exactly what Wazuh's default rules look for."],
+["SQL injection (in-band)",0,"Full user database dumped from the login form.","No alert at all. One well-formed request, and the SIEM saw nothing unusual."],
+["SQL injection (blind, sqlmap)",1,"Full table dumped, every hash cracked in under 3 seconds (weak unsalted MD5).","Same flaw as above, but sqlmap's noisy automation set off 5,494 alerts. Detection followed the tool's noise, not the severity."],
+["XSS (reflected)",1,"Arbitrary script ran in the browser.","Caught because the payload contained an obvious script pattern."],
+["XSS (stored)",0,"Script persists and runs for every visitor.","Missed. Same bug family as reflected XSS, but the payload was stored, not sent in a request pattern the rules match."],
+["Command injection",0,"Arbitrary OS commands executed on the server.","Missed. This was the most severe finding and it produced zero alerts."],
+["CSRF",0,"Admin password silently changed.","Missed. A legitimate-looking request from a logged-in user gives a SIEM nothing to match."],
+["Clickjacking + CSRF chain",0,"Full admin takeover from a single page visit, no click needed.","Missed. Two invisible weaknesses chained into the worst outcome in the lab."]];
+const bar=document.getElementById('bar'),list=document.getElementById('list'),det=document.getElementById('det');
+const bl=[],rw=[];
+A.forEach((a,i)=>{
+ const b=document.createElement('button');b.className='blk';b.setAttribute('aria-label',a[0]);b.onclick=()=>pick(i);bar.appendChild(b);bl.push(b);
+ const r=document.createElement('button');r.className='row';r.innerHTML='<span>'+a[0]+'</span><span class="tag '+(a[1]?'ok':'bad')+'">'+(a[1]?'DETECTED':'MISSED')+'</span>';r.onclick=()=>pick(i);list.appendChild(r);rw.push(r)});
+function pick(i){
+ bl.forEach((b,j)=>b.setAttribute('aria-pressed',j===i));rw.forEach((r,j)=>r.setAttribute('aria-pressed',j===i));
+ const a=A[i];det.innerHTML='<span class="st '+(a[1]?'ok':'bad')+'">'+(a[1]?'DETECTED BY WAZUH':'MISSED BY WAZUH')+'</span><h3>'+a[0]+'</h3><p><b>What I did:</b> '+a[2]+'</p><p><b>What the SIEM saw:</b> '+a[3]+'</p>'}
+pick(5);
+const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+A.forEach((a,i)=>setTimeout(()=>bl[i].classList.add(a[1]?'ok':'bad'),rm?0:300+i*180));
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const sk=document.getElementById('sky');for(let i=0;i<34;i++){const e=document.createElement('i');e.style.height=(40+Math.random()*85)+'px';if(Math.random()<.4)e.className='led';sk.appendChild(e)}
+(function(){const c=document.getElementById('net'),x=c.getContext('2d');let W,H,N=[],L=[],P=[];
+function init(){const b=c.parentElement.getBoundingClientRect();W=c.width=b.width;H=c.height=b.height;N=[];
+for(let i=0;i<Math.round(W*H/20000);i++)N.push({x:Math.random()*W,y:Math.random()*H*.75,f:0});
+L=[];N.forEach((a,i)=>N.forEach((n,j)=>{if(j>i&&Math.hypot(a.x-n.x,a.y-n.y)<150)L.push([i,j])}))}
+function spawn(bad){if(!L.length)return;P.push({l:L[Math.random()*L.length|0],t:0,s:.01+Math.random()*.01,bad,d:Math.random()<.5})}
+function draw(){x.clearRect(0,0,W,H);x.lineWidth=1;x.strokeStyle='rgba(63,196,179,.16)';
+L.forEach(l=>{x.beginPath();x.moveTo(N[l[0]].x,N[l[0]].y);x.lineTo(N[l[1]].x,N[l[1]].y);x.stroke()});
+N.forEach(n=>{x.fillStyle=n.f>0?'rgba(255,107,82,'+n.f+')':'rgba(63,196,179,.55)';x.beginPath();x.arc(n.x,n.y,n.f>0?3+n.f*7:2.2,0,7);x.fill();if(n.f>0)n.f-=.012});
+P.forEach(p=>{const a=N[p.l[p.d?0:1]],b=N[p.l[p.d?1:0]];x.fillStyle=p.bad?'#FF6B52':'#9CC4E4';x.beginPath();x.arc(a.x+(b.x-a.x)*p.t,a.y+(b.y-a.y)*p.t,p.bad?3.5:2,0,7);x.fill();p.t+=p.s;if(p.t>=1){if(p.bad)b.f=1;p.x=1}});
+P=P.filter(p=>!p.x)}
+init();draw();addEventListener('resize',()=>{init();draw()});
+if(!rm){setInterval(()=>spawn(1),2200);(function f(){if(Math.random()<.07)spawn(0);draw();requestAnimationFrame(f)})()}})();
+</script>
+</body>
+</html>
